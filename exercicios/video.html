@@ -8,8 +8,8 @@
 </div>
 
 <div>
-    <button wm-play="meuVideo">Play</button>
-    <button wm-pause="meuVideo">Pause</button>
+    <button wm-play="meuVideo">play</button>
+    <button wm-pause="meuVideo">pause</button>
 </div>
 
 <style>
@@ -29,3 +29,22 @@
         width: 0%;
     }
 </style>
+
+<script>
+    function configurarVideo(id) {
+        const video = document.getElementById(id)
+        video.oncontextmenu = () => false
+
+        document.querySelector(`[wm-play=${id}]`).onclik = e => video.play()
+        document.querySelector(`[wm-pause=${id}]`).onclik = e => video.pause()
+
+        setInterval(() => {
+            const percentual = (video.currentTime / video.duration) * 100
+            const valorDiv = document.querySelector(`[wm-progreso=${id}] > div`)
+            valorDiv.style.width = `${percentual}%`
+            valorDiv.innerHTML = `${percentual.toFixed(1)}%`
+        }, 500)
+    }
+
+    configurarVideo("meuVideo")
+</script>

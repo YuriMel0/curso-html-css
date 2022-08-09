@@ -1,4 +1,4 @@
-## HTML básico 
+## HTML e CSS básico
 
 o objetivo e armazenar os códigos desenvolvidos em aula
 
